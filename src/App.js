@@ -12,6 +12,8 @@ function App() {
       <Nav/>
       <Router>
         <Students path='/students'/>
+        <Students path='/students/:graduated'/>
+        <Students path='/students/current'/>
       </Router>
     </div>
   );

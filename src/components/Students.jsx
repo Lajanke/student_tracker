@@ -1,6 +1,7 @@
 import React from 'react';
 import StudentCard from './StudentCard';
 import axios from 'axios';
+import StudentFilter from './StudentFilter';
 
 class Students extends React.Component {
     state = {
@@ -12,23 +13,37 @@ class Students extends React.Component {
         this.fetchStudents()
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.graduated !== this.props.graduated) {
+            this.fetchStudents()
+        }
+    }
+
     fetchStudents() {
-        axios.get('https://nc-student-tracker.herokuapp.com/api/students')
+        console.log(this.props)
+        const { graduated } = this.props
+        axios.get('https://nc-student-tracker.herokuapp.com/api/students',
+            {
+                params: {
+                    graduated: graduated
+                }
+            })
             .then(({ data }) => {
                 this.setState({ students: data.students, isLoading: false })
             })
     }
 
-    render() { 
+    render() {
         if (this.state.isLoading) return <p>LOADING DATA</p>
         return (
-            <React.Fragment>
+            <React.Fragment> 
                 <h2>Students</h2>
+                <StudentFilter />
                 <ul>
                     {this.state.students.map((student) => {
                         return (
                             <li key={`${student.name}${student._id}`}>
-                                <StudentCard student={student}/>
+                                <StudentCard student={student} />
                             </li>
                         )
                     })}
