@@ -10,10 +10,10 @@ state = {
 
   render() {
     const data = {
-        labels: this.state.blocks,
-        datasets: [{
-            data: [2, 8, 6, 1], //placeholders
-            backgroundColor: [
+      labels: this.state.blocks,
+      datasets: [{
+          data: [12, 18, 21, 14], // placeholders
+          backgroundColor: [
             '#f0e2e1',
             '#202829',
             '#ba1f31',
@@ -25,11 +25,12 @@ state = {
             '#db2a3e',
             '#242323',
             ],
-        }],
+        }]
     };
 
     return (
       <div>
+        <h3>Distribution</h3>
         <Doughnut data={data} />
       </div>
     );
