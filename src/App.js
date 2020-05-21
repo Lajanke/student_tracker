@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Students from './components/Students';
+import Blocks from './components/Blocks';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Students path='/students'/>
         <Students path='/students/:graduated'/>
         <Students path='/students/current'/>
+        <Blocks path='blocks'/>
       </Router>
     </div>
   );

@@ -5,7 +5,7 @@ function StudentCard(props) {
 
     return (
         <React.Fragment>
-            <h1>{name}</h1>
+            <h3>{name}</h3>
             <p>Cohort: {startingCohort}</p>
             {currentBlock === 'grad' &&
                 <p>Graduated</p>
@@ -19,3 +19,5 @@ function StudentCard(props) {
 }
 
 export default StudentCard;
+
+//Alter block names to full name.

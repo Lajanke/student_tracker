@@ -1,11 +1,48 @@
 .App {
   text-align: center;
-  max-width: 400px;
   margin: auto;
 }
 
 html, body {
-  background-color: #fffce6;
+  background-color: #ffffff;
+  font-family: gotham-bold, sans-serif;
+  color: #202829;
+}
+
+img {
+  max-height: 2rem;
+  float: left;
+  margin-left: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+header {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #202829;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 2.7rem;
+  margin: 0;
+  color: #ffffff;
+}
+
+.nav {
+  background-color: #202829;
+  padding-bottom: 1.5rem;
+}
+
+h2 {
+  margin-top: 0;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.filter {
+  background-color: #202829;
 }
 
 ul {
@@ -16,6 +53,21 @@ ul {
 
 li {
   margin: auto;
-  border-width: 1px 0 0 0;
-  border-style: dashed;
+  border-width: 0 0 1px 0;
+  border-style: dotted;
 }
+
+a {
+  box-sizing: inherit;
+  text-decoration: none;
+  display: block;
+  padding: 0 1rem 0 1rem;
+  color: #ffffff;
+  margin: 0;
+  background-color: #ba1f31;
+  border-style: solid;
+  border-color: #ba1f31 #ba1f31  #202829 #ba1f31;
+  border-width: 1px;
+}
+
+
