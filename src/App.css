@@ -7,6 +7,8 @@ html, body {
   background-color: #ffffff;
   font-family: gotham-bold, sans-serif;
   color: #202829;
+  max-width: 1000px;
+  margin: auto;
 }
 
 img {
@@ -54,9 +56,34 @@ ul {
 
 form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  max-width: 200px;
   margin: auto;
   color: #ffffff;
+  padding: 1rem;
+}
+
+input {
+  background-color: #202829;
+  color: #ffffff;
+  border-color: #ffffff;
+  padding: 0.5rem;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  padding: 0.5rem;
+}
+
+button {
+  background-color: #ba1f31;
+  border-color: #ba1f31;
+  color: #ffffff;
+  border-style: solid;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
 }
 
 li {
@@ -97,24 +124,24 @@ li {
 
 .Graduated {
   border-style: solid;
-  border-width: 1px 0 1px 1px;
+  border-width: 1px;
 }
 
 .count1 {
   border-style: solid;
-  border-width: 1px 0 1px 1px;
+  border-width: 1px;
   border-color: #9ae897;
 }
 
 .count2 {
   border-style: solid;
-  border-width: 1px 0 1px 1px;
+  border-width: 1px;
   border-color: #f7941d;
 }
 
 .count3 {
   border-style: solid;
-  border-width: 1px 0 1px 1px;
+  border-width: 1px;
   border-color: #ba1f31;
 }
 
@@ -131,4 +158,27 @@ a {
   border-width: 1px;
 }
 
+@media only screen and (min-width: 750px) {
+  form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  max-width: 1000px;
+  color: #ffffff;
+  }
 
+  input {
+    margin: auto;
+    padding: auto;
+  }
+  
+  label {
+    padding: auto;
+    margin: auto;
+  }
+
+  button {
+    padding: auto;
+    margin: auto;
+  }
+}

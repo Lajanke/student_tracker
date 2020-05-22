@@ -35,7 +35,7 @@ class StudentAdder extends React.Component {
                     <input onChange={this.handleInputChange} name="name" value={this.state.name}/>
                     <label htmlFor="startingCohort">Cohort:</label>
                     <input onChange={this.handleInputChange} name="startingCohort" value={this.state.startingCohort}/>
-                    <button>SUBMIT</button>
+                    <button>ADD STUDENT</button>
                 </form>
             </React.Fragment>
         )
