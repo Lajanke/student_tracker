@@ -3,11 +3,13 @@ import StudentCard from './StudentCard';
 import axios from 'axios';
 import StudentFilter from './StudentFilter';
 import { changeBlockSlug } from '../utils';
+import StudentAdder from './StudentAdder';
 
 class Students extends React.Component {
     state = {
         students: [],
         isLoading: true,
+        graduated: false,
     }
 
     componentDidMount() {
@@ -20,7 +22,7 @@ class Students extends React.Component {
         }
     }
 
-    fetchStudents() {
+    fetchStudents = () => {
         const { graduated } = this.props
         axios.get('https://nc-student-tracker.herokuapp.com/api/students',
             {
@@ -29,11 +31,18 @@ class Students extends React.Component {
                 }
             })
             .then(({ data }) => {
-                this.setState({ students: changeBlockSlug(data.students), isLoading: false })
+                this.setState({ students: changeBlockSlug(data.students), isLoading: false, graduated: this.props.graduated })
             })
     }
 
-//add a student count
+    addStudentToList = (newStudent) => {
+        this.setState((currentState) => {
+            return {
+                students: [newStudent, ...currentState.students]
+            }
+        })
+    }
+    //add a student count
 
     render() {
         if (this.state.isLoading) return <p>LOADING DATA</p>
@@ -42,7 +51,15 @@ class Students extends React.Component {
                 <div className='filter'>
                     <h2>Students</h2>
                     <StudentFilter />
+                    <StudentAdder addStudentToList={this.addStudentToList}/>
                 </div>
+                {console.log(this.props.graduated)}
+                {this.props.graduated === 'true' &&
+                    <h3>{this.state.students.length} students have graduated</h3>
+                }
+                {this.props.graduated === 'false' &&
+                    <h3>{this.state.students.length} current students</h3>
+                }
                 <ul>
                     {this.state.students.map((student) => {
                         return (

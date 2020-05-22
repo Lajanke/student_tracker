@@ -23,7 +23,8 @@ const changeBlockSlug = (students) => { // refator to switch?
 }
 
 const addBlockCount = (student, blockHistory) => {
-    if (blockHistory.length === 0 || typeof(blockHistory) === 'undefined') {
+    
+    if (blockHistory.length === 0) {
         return [];
     }
 

@@ -4,7 +4,6 @@ import './App.css';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Students from './components/Students';
-//import Blocks from './components/Blocks';
 import BlocksHome from './components/BlocksHome';
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
         <Students path='/students/:graduated' />
         <Students path='/students/current' />
         <BlocksHome path='/blocks/*' />
-        {/*<Blocks path='/blocks/*' />*/}
       </Router>
     </div>
   );

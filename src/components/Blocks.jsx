@@ -9,15 +9,14 @@ class Blocks extends React.Component {
     }
 
     componentDidMount() {
-        console.log('mounted');
         this.fetchStudentsOnBlock()
     }
 
     componentDidUpdate(prevProps) {
         const { block } = this.props;
-        if (prevProps.block !== block)  {  
+        if (prevProps.block !== block) {
             this.fetchStudentsOnBlock()
-        } 
+        }
     }
 
     fetchStudentsOnBlock() {
@@ -35,12 +34,15 @@ class Blocks extends React.Component {
 
     render() {
         return (
-            <React.Fragment> 
-                <ul>   
-                    {this.state.studentsOnBlock.map((student) => { //Need to use a util to add number of times on block, accessed on students/:id endpoint. Different cards?
+            <React.Fragment>
+                {this.state.studentsOnBlock[0] &&
+                    <h3>{(this.state.studentsOnBlock).length} students</h3>
+                }
+                <ul>
+                    {this.state.studentsOnBlock.map((student) => {
                         return (
                             <li key={student._id}>
-                                <StudentBlockCard student={student} /> 
+                                <StudentBlockCard student={student} />
                             </li>
                         )
                     })}

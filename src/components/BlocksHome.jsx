@@ -5,7 +5,6 @@ import { Router } from '@reach/router';
 import Blocks from './Blocks';
 
 const BlocksHome = () => {
-    console.log('in blocks home')
     return (
         <div>
             <React.Fragment>

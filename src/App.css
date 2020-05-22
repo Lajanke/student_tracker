@@ -52,6 +52,13 @@ ul {
   padding: 0;
 }
 
+form {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  color: #ffffff;
+}
+
 li {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
