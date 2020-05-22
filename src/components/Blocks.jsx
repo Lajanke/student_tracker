@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import StudentCard from './StudentCard';
+import StudentBlockCard from './StudentBlockCard';
 
 class Blocks extends React.Component {
     state = {
@@ -40,7 +40,7 @@ class Blocks extends React.Component {
                     {this.state.studentsOnBlock.map((student) => { //Need to use a util to add number of times on block, accessed on students/:id endpoint. Different cards?
                         return (
                             <li key={student._id}>
-                                <StudentCard student={student} /> 
+                                <StudentBlockCard student={student} /> 
                             </li>
                         )
                     })}

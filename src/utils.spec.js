@@ -71,15 +71,13 @@ describe('changeBlockSlug', () => {
 
 
 describe.only('addBlockCount', () => {
-  const studentList = [
-    {
+  const student = {
       "_id": "5ec7b20f98092b8431749c4a",
       "name": "Wilfrid Swift",
       "startingCohort": 9,
       "currentBlock": "fe"
     }
-  ]
-
+  
   const blockHistory = [
     {
       "_id": "5ec7b20f98092b8431749bfc",
@@ -108,14 +106,14 @@ describe.only('addBlockCount', () => {
   ]
 
   test('When passed empty array for studentList returns an empty array', () => {
-    expect(addBlockCount([], [])).toEqual([]);
+    expect(addBlockCount({}, [])).toEqual([]);
   });
-  test('Returns an array of students with the key of timesOnBlock', () => {
-    const [ output ] = addBlockCount(studentList, blockHistory)
+  test('Returns a student object with the key of timesOnBlock', () => {
+    const output = addBlockCount(student, blockHistory)
     expect(output).toHaveProperty('timesOnBlock')
   })
   test('Adds a count for the current block the student is on', () => {
-    const [ output ] = addBlockCount(studentList, blockHistory)
+    const output = addBlockCount(student, blockHistory)
     expect(output.timesOnBlock).toBe(2)
   })
 });

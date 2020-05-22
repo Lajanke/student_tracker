@@ -8,18 +8,17 @@ const BlocksHome = () => {
     console.log('in blocks home')
     return (
         <div>
-        <React.Fragment>
-            <div className='filter'>
-                <h2>Blocks</h2>
-                <BlocksFilter />
-            </div>     
+            <React.Fragment>
+                <div className='filter'>
+                    <h2>Blocks</h2>
+                    <BlocksFilter />
+                </div>
             </React.Fragment>
             <Router>
-                <Chart path='/'/>
-                <Blocks path=':block'/>
+                <Chart path='/' />
+                <Blocks path=':block' />
             </Router>
-            
-            </div>
+        </div>
     )
 }
 
