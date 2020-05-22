@@ -2,6 +2,7 @@ import React from 'react';
 import StudentCard from './StudentCard';
 import axios from 'axios';
 import StudentFilter from './StudentFilter';
+import { changeBlockSlug } from '../utils';
 
 class Students extends React.Component {
     state = {
@@ -20,16 +21,15 @@ class Students extends React.Component {
     }
 
     fetchStudents() {
-        console.log(this.props)
         const { graduated } = this.props
         axios.get('https://nc-student-tracker.herokuapp.com/api/students',
             {
                 params: {
-                    graduated: graduated
+                    graduated
                 }
             })
             .then(({ data }) => {
-                this.setState({ students: data.students, isLoading: false })
+                this.setState({ students: changeBlockSlug(data.students), isLoading: false })
             })
     }
 
@@ -44,7 +44,7 @@ class Students extends React.Component {
                 <ul>
                     {this.state.students.map((student) => {
                         return (
-                            <li key={`${student.name}${student._id}`}>
+                            <li key={student._id}>
                                 <StudentCard student={student} />
                             </li>
                         )

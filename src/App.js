@@ -15,7 +15,8 @@ function App() {
         <Students path='/students'/>
         <Students path='/students/:graduated'/>
         <Students path='/students/current'/>
-        <Blocks path='blocks'/>
+        <Blocks path='/blocks'/>
+        <Blocks path='/blocks/:block'/>
       </Router>
     </div>
   );

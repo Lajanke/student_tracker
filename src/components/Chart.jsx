@@ -14,13 +14,13 @@ state = {
       datasets: [{
           data: [12, 18, 21, 14], // placeholders
           backgroundColor: [
-            '#f0e2e1',
+            '#60adca',
             '#202829',
             '#ba1f31',
             '#000000',
             ],
             hoverBackgroundColor: [
-            '#fffafa',
+            '#78d3f5',
             '#2c3738',
             '#db2a3e',
             '#242323',
