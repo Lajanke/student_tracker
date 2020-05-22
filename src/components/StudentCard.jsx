@@ -5,18 +5,13 @@ function StudentCard(props) {
 
     return (
         <React.Fragment>
-                    <div>
-                    <h3>{name}</h3>
-                    <p>Cohort: {startingCohort}</p>
-                    </div>
-                    <div className='blockGrid'>
-                    {currentBlock === 'graduated' &&
-                        <p>Graduated</p>
-                    }
-                    {currentBlock !== 'graduated' &&
-                        <p>{currentBlock}</p>
-                    } 
-                    </div>
+            <div>
+                <h3>{name}</h3>
+                <p>Cohort: {startingCohort}</p>
+            </div>
+            <div className={`gridBlock ${currentBlock}`}>
+                <p>{currentBlock}</p>
+            </div>
         </React.Fragment>
     )
 }

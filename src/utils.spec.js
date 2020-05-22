@@ -1,6 +1,8 @@
-const { changeBlockSlug } = require('./utils')
+const { changeBlockSlug,
+  addBlockCount, } = require('./utils')
 
-const input = [{
+describe('changeBlockSlug', () => {
+  const input = [{
     "_id": "5eaab0abee1b3b0017b70718",
     "name": "Joe",
     "startingCohort": 1,
@@ -38,32 +40,83 @@ const input = [{
     "currentBlock": "be"
   },]
 
-describe('changeBlockSlug', () => {
-    test ('When passed an empty array returns an empty array', () => {
-        expect(changeBlockSlug([])).toEqual([]);
-    });
-    test ('When passed an object array returns all keys', () => {
-        const [ output ] = changeBlockSlug(input);
+  test('When passed an empty array returns an empty array', () => {
+    expect(changeBlockSlug([])).toEqual([]);
+  });
+  test('When passed an object array returns all keys', () => {
+    const [output] = changeBlockSlug(input);
 
-        expect(output).toHaveProperty('_id');
-        expect(output).toHaveProperty('name');
-        expect(output).toHaveProperty('startingCohort');
-        expect(output).toHaveProperty('currentBlock');
-    });
-    test ('Changes the value of current block to be a full word for one block', () => {
+    expect(output).toHaveProperty('_id');
+    expect(output).toHaveProperty('name');
+    expect(output).toHaveProperty('startingCohort');
+    expect(output).toHaveProperty('currentBlock');
+  });
+  test('Changes the value of current block to be a full word for one block', () => {
 
-        const [ output ] = changeBlockSlug(input);
+    const [output] = changeBlockSlug(input);
 
-        expect(output.currentBlock).toBe('Frontend');
-    });
-    test ('Changes the value of current block to be a full word for all blocks', () => {
+    expect(output.currentBlock).toBe('Frontend');
+  });
+  test('Changes the value of current block to be a full word for all blocks', () => {
 
-        const output = changeBlockSlug(input2);
+    const output = changeBlockSlug(input2);
 
-        expect(output[0].currentBlock).toBe('Fundamentals');
-        expect(output[1].currentBlock).toBe('Graduated');
-        expect(output[2].currentBlock).toBe('Project Stage');
-        expect(output[3].currentBlock).toBe('Frontend');
-        expect(output[4].currentBlock).toBe('Backend');
-    });
+    expect(output[0].currentBlock).toBe('Fundamentals');
+    expect(output[1].currentBlock).toBe('Graduated');
+    expect(output[2].currentBlock).toBe('Project');
+    expect(output[3].currentBlock).toBe('Frontend');
+    expect(output[4].currentBlock).toBe('Backend');
+  });
 });
+
+
+describe.only('addBlockCount', () => {
+  const studentList = [
+    {
+      "_id": "5ec7b20f98092b8431749c4a",
+      "name": "Wilfrid Swift",
+      "startingCohort": 9,
+      "currentBlock": "fe"
+    }
+  ]
+
+  const blockHistory = [
+    {
+      "_id": "5ec7b20f98092b8431749bfc",
+      "number": 1,
+      "name": "Fundamentals",
+      "slug": "fun"
+    },
+    {
+      "_id": "5ec7b20f98092b8431749bfd",
+      "number": 2,
+      "name": "Back End",
+      "slug": "be"
+    },
+    {
+      "_id": "5ec7b20f98092b8431749bfe",
+      "number": 3,
+      "name": "Front End",
+      "slug": "fe"
+    },
+    {
+      "_id": "5ec7b20f98092b8431749bfe",
+      "number": 3,
+      "name": "Front End",
+      "slug": "fe"
+    }
+  ]
+
+  test('When passed empty array for studentList returns an empty array', () => {
+    expect(addBlockCount([], [])).toEqual([]);
+  });
+  test('Returns an array of students with the key of timesOnBlock', () => {
+    const [ output ] = addBlockCount(studentList, blockHistory)
+    expect(output).toHaveProperty('timesOnBlock')
+  })
+  test('Adds a count for the current block the student is on', () => {
+    const [ output ] = addBlockCount(studentList, blockHistory)
+    expect(output.timesOnBlock).toBe(2)
+  })
+});
+

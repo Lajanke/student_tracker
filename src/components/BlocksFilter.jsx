@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@reach/router' 
 
-const StudentFilter = () => {
+const BlocksFilter = () => {
     return (
         <div>
             <Link to='/blocks/fun'>
@@ -20,6 +20,4 @@ const StudentFilter = () => {
     )
 }
 
-export default StudentFilter;
-
-//block=[block_slug]
+export default BlocksFilter;

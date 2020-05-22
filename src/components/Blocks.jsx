@@ -1,8 +1,5 @@
 import React from 'react';
-//import StudentCard from './StudentCard';
 import axios from 'axios';
-import BlocksFilter from './BlocksFilter';
-import Chart from './Chart';
 import StudentCard from './StudentCard';
 
 class Blocks extends React.Component {
@@ -12,13 +9,15 @@ class Blocks extends React.Component {
     }
 
     componentDidMount() {
+        console.log('mounted');
         this.fetchStudentsOnBlock()
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.block !== this.props.block) {
+        const { block } = this.props;
+        if (prevProps.block !== block)  {  
             this.fetchStudentsOnBlock()
-        }
+        } 
     }
 
     fetchStudentsOnBlock() {
@@ -37,12 +36,8 @@ class Blocks extends React.Component {
     render() {
         return (
             <React.Fragment> 
-                <div className='filter'>
-                <h2>Blocks</h2>
-                <BlocksFilter />
-                </div>
                 <ul>   
-                    {this.state.studentsOnBlock.map((student) => { //Need to use a util to add number of times on block, accessed on students/:id endpoint. Different card?
+                    {this.state.studentsOnBlock.map((student) => { //Need to use a util to add number of times on block, accessed on students/:id endpoint. Different cards?
                         return (
                             <li key={student._id}>
                                 <StudentCard student={student} /> 
@@ -50,7 +45,6 @@ class Blocks extends React.Component {
                         )
                     })}
                 </ul>
-                <Chart/>
             </React.Fragment>
         )
     }

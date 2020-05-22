@@ -33,13 +33,15 @@ class Students extends React.Component {
             })
     }
 
+//add a student count
+
     render() {
         if (this.state.isLoading) return <p>LOADING DATA</p>
         return (
-            <React.Fragment> 
+            <React.Fragment>
                 <div className='filter'>
-                <h2>Students</h2>
-                <StudentFilter />
+                    <h2>Students</h2>
+                    <StudentFilter />
                 </div>
                 <ul>
                     {this.state.students.map((student) => {
